@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body{
+            background: bisque;
+            padding: 10vw;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2> Text Analysis </h2>
+    </div>
+    <hr>
+    <hr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>word count</th>
+            <th>sen count</th>
+            <th>stop count</th>
+            <th>upos tags</th>
+            <th>tag count</th>
+        </tr>
+        {%for i in users%}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <td>{{ i[3] }}</td>
+                <td>{{ i[4] }}</td>
+                <td> {{i[5]}} </td>
+                <td> {{i[6]}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

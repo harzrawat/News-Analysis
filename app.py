@@ -1,9 +1,23 @@
 from flask import Flask,render_template, url_for, request,redirect
-import nltk
+#import nltk
 from nltk import word_tokenize, sent_tokenize,pos_tag
 from nltk.corpus import stopwords
 import psycopg2
 import json
+
+import nltk
+
+def download_nltk_data():
+    try:
+        nltk.download('punkt')
+    except LookupError:
+        pass  # Ignore if the model is already downloaded
+
+download_nltk_data()
+
+# Rest of your application logic
+
+
 app = Flask(__name__)
 
 db_params = {

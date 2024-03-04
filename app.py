@@ -10,7 +10,7 @@ db_params = {
     'dbname': 'dhp2024',
     'user': 'harsh',
     'password': 'og0SmkFq8jjWPuHtF33OKNf67Ksr6ccl',
-    'host': 'postgres://harsh:og0SmkFq8jjWPuHtF33OKNf67Ksr6ccl@dpg-cn3rmr2cn0vc738puj60-a/dhp2024',
+    'host': 'dpg-cn3rmr2cn0vc738puj60-a',
     'port': 5432
     
 }

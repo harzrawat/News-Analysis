@@ -221,7 +221,7 @@ def header(url):
 
 
 
-@app.route("/submit",methods=['POST'])
+@app.route("/submit",methods=['POST','GET'])
 def submit():
     username1 = request.form.get('username','')
 

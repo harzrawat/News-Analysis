@@ -9,23 +9,39 @@ from bs4 import BeautifulSoup
 from jinja2 import Template
 from authlib.integrations.flask_client import OAuth
 
-def download_nltk_data():
-    try:
-        nltk.download('all')
-    except LookupError:
-        pass  # Ignore if the data is already downloaded
+# def download_nltk_data():
+#     try:
+#         nltk.download('all')
+#     except LookupError:
+#         pass  # Ignore if the data is already downloaded
 
-download_nltk_data()
+# download_nltk_data()
 
 import subprocess
 
-def install_psycopg2():
-  """Installs psycopg2 using pip."""
+def install_required_libraries():
+  # """Installs psycopg2 and downloads NLTK data (if needed)."""
   try:
+    # Install psycopg2
     subprocess.run(["pip", "install", "psycopg2"])
-    print("psycopg2 installed successfully!")
+    #print("psycopg2 installed successfully!")
+
+    # Install NLTK (and download data conditionally)
+    try:
+      import nltk
+      nltk.download('all')  # Download basic tokenizer
+      #print("NLTK (punkt tokenizer) downloaded.")
+    except (ImportError, nltk.DownloadError):
+        pass
+      # Handle cases where NLTK is not installed or data download fails
+      #print("Nltk or tokenizer data download failed. Skipping.")
+
   except subprocess.CalledProcessError as e:
-    pass
+      pass
+    #print(f"Error installing libraries: {e}")
+
+install_required_libraries()
+
 
 
 app = Flask(__name__)
@@ -133,7 +149,6 @@ create_table()
     
 def refined_text(url):
 
-    #url="https://www.indiatoday.in/india/story/brs-legislator-lasya-nanditha-dies-in-car-accident-in-telangana-2505975-2024-02-23"
     html1=req.urlopen(url).read().decode('utf8')
     soup=BeautifulSoup(html1,'html.parser')
 
@@ -234,7 +249,7 @@ def header(url):
 def submit():
     try:
         username1 = request.form.get('username','')
-        url=request.form.get('url','')   # request.form['url'] can also get  
+        url=request.form.get('url','') 
     except Exception as e:
         raise
         para1,author,inshort1,published_date = refined_text(url)
@@ -247,14 +262,6 @@ def submit():
         pos_tag_dict=json.dumps(pos_tag_freq1)
     
         news_channel = "India Today"
-    
-        # global para1 
-        # para1= refined_text(url)
-        # author = author(url)
-        # inshort = inshort(url)
-        # word_count,word_list = word_count(para1)
-        # sen_count = sen_count(para1)
-        # pos_tag_dict = pos_tag_freq(para1)
     
 
     try:

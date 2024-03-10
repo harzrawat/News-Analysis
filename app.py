@@ -223,9 +223,9 @@ def header(url):
 
 @app.route("/submit",methods=['POST'])
 def submit():
-    username1 = request.form.get('username')
+    username1 = request.form.get('username','')
 
-    url=request.form.get('url')   # request.form['url'] can also get  
+    url=request.form.get('url','')   # request.form['url'] can also get  
 
     para1,author,inshort1,published_date = refined_text(url)
     word_count1,word_list = word_count(para1)

@@ -1,6 +1,7 @@
 from flask import Flask,flash, render_template, request, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
-import psycopg2,json
+import json
+# import psycopg2
 import nltk
 import re
 from nltk import word_tokenize, sent_tokenize, pos_tag
@@ -9,38 +10,43 @@ from bs4 import BeautifulSoup
 from jinja2 import Template
 from authlib.integrations.flask_client import OAuth
 
-# def download_nltk_data():
-#     try:
-#         nltk.download('all')
-#     except LookupError:
-#         pass  # Ignore if the data is already downloaded
-
-# download_nltk_data()
+nltk.download('all')
 
 import subprocess
 
-def install_required_libraries():
-  # """Installs psycopg2 and downloads NLTK data (if needed)."""
-  try:
-    # Install psycopg2
-    subprocess.run(["pip", "install", "psycopg2"])
-    #print("psycopg2 installed successfully!")
+# Install psycopg2 using subprocess
+subprocess.run(["pip", "install", "psycopg2-binary"])
 
-    # Install NLTK (and download data conditionally)
-    try:
-      import nltk
-      nltk.download('all')  # Download basic tokenizer
-      #print("NLTK (punkt tokenizer) downloaded.")
-    except (ImportError, nltk.DownloadError):
-        pass
-      # Handle cases where NLTK is not installed or data download fails
-      #print("Nltk or tokenizer data download failed. Skipping.")
+# Now you can import psycopg2 and use it in your code
+import psycopg2
 
-  except subprocess.CalledProcessError as e:
-      pass
-    #print(f"Error installing libraries: {e}")
 
-install_required_libraries()
+
+
+# import subprocess
+
+# def install_required_libraries():
+#   # """Installs psycopg2 and downloads NLTK data (if needed)."""
+#   try:
+#     # Install psycopg2
+#     subprocess.run(["pip", "install", "psycopg2"])
+#     #print("psycopg2 installed successfully!")
+
+#     # Install NLTK (and download data conditionally)
+#     try:
+#       import nltk
+#       nltk.download('all')  # Download basic tokenizer
+#       #print("NLTK (punkt tokenizer) downloaded.")
+#     except (ImportError, nltk.DownloadError):
+#         pass
+#       # Handle cases where NLTK is not installed or data download fails
+#       #print("Nltk or tokenizer data download failed. Skipping.")
+
+#   except subprocess.CalledProcessError as e:
+#       pass
+#     #print(f"Error installing libraries: {e}")
+
+# install_required_libraries()
 
 
 

@@ -17,6 +17,17 @@ def download_nltk_data():
 
 download_nltk_data()
 
+import subprocess
+
+def install_psycopg2():
+  """Installs psycopg2 using pip."""
+  try:
+    subprocess.run(["pip", "install", "psycopg2"])
+    print("psycopg2 installed successfully!")
+  except subprocess.CalledProcessError as e:
+    pass
+
+
 app = Flask(__name__)
 
 
@@ -249,22 +260,6 @@ def submit():
     try:
         conn = psycopg2.connect(**db_params)
         cur = conn.cursor()
-
-        # Insert the user information into the data_table
-        #if url not in 
-        # cur.execute("""
-        #     INSERT INTO url_table (username,url,
-        #         paragraph,
-        #         Author,
-        #         summary,
-        #         inshort,
-        #         sen_count,
-        #         word_count,
-        #         UPOS_tags_freq,
-        #         News_channel,
-        #         Published_on DATE
-        #     ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        # """, (username,url,para1,author,None,inshort,sen_count,word_count,pos_tag_dict,news_channel,published_date))
 
         cur.execute("""
         INSERT INTO url_table (username, url, paragraph, Author, header, inshort, sen_count, word_count, UPOS_tags_freq, News_channel, Published_on)

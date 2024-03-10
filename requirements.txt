@@ -20,4 +20,3 @@ click
 itsdangerous
 six
 authlib
-subprocess

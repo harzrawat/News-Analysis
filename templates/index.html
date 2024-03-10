@@ -1,12 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #ceeab1c9;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-left: 5vw;
+      margin-right: 5vw;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-section {
+      display: flex;
+      justify-content: space-around;
+      gap: 50px;
+      padding: 20px;
+      
+    }
+
+    #admin,#user{
+        background-color: rgba(234, 187, 122, 0.689);
+        padding: 20px;
+        border-radius: 3%;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
-    {% block content%}
-    {% endblock %}
+  <div class="container">
+    <form class="container" action="/submit" method="post">
+      <h1>Welcome to the Index Page</h1>
+      <label for="Username">Username<span style="color: red; font-size: large;">*</span> :</label>
+      <input type="text" id="adminUsername" placeholder="Your name" required>
+      <label for="url">Enter URL<span style="color: red; font-size: larger;">*</span> :</label>
+      <input type="text" id="url" placeholder="Enter URL of India Today only" name="url" required>
+      <button type="submit">Submit</button>
+
+      
+    </form>
+    <form action="/github">
+      <div class="login-section">
+        <!-- <div id="admin">
+          <h2>Admin Login</h2>
+          <label for="adminUsername">Username:</label>
+          <input type="text" id="adminUsername" placeholder="Admin Username">
+          <label for="adminPassword">Password:</label>
+          <input type="password" id="adminPassword" placeholder="Admin Password">
+          <button onclick="adminLogin()">Login as Admin</button>
+        </div> -->
+
+        <div id="user">
+          <h2>GitHub Authentication</h2>
+
+          <button type="submit"><a href="{{url_for('github_login')}}">Login with GitHub</a> </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </body>
 </html>

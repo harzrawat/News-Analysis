@@ -11,9 +11,7 @@ from authlib.integrations.flask_client import OAuth
 
 def download_nltk_data():
     try:
-        nltk.download('punkt')
-        nltk.download('stopwords')
-        nltk.download('averaged_perceptron_tagger')
+        nltk.download('all')
     except LookupError:
         pass  # Ignore if the data is already downloaded
 
@@ -223,28 +221,29 @@ def header(url):
 
 @app.route("/submit",methods=['POST','GET'])
 def submit():
-    username1 = request.form.get('username','')
-
-    url=request.form.get('url','')   # request.form['url'] can also get  
-
-    para1,author,inshort1,published_date = refined_text(url)
-    word_count1,word_list = word_count(para1)
-    sen_count1 = sen_count(para1)
-    title1,subtitle1 = header(url)
-
-    pos_tag_freq1,pos_tag_dict = pos_tag_freq(para1)
-    upos_dict_len = len(pos_tag_freq1)
-    pos_tag_dict=json.dumps(pos_tag_freq1)
-
-    news_channel = "India Today"
-
-    # global para1 
-    # para1= refined_text(url)
-    # author = author(url)
-    # inshort = inshort(url)
-    # word_count,word_list = word_count(para1)
-    # sen_count = sen_count(para1)
-    # pos_tag_dict = pos_tag_freq(para1)
+    try:
+        username1 = request.form.get('username','')
+        url=request.form.get('url','')   # request.form['url'] can also get  
+    except Exception as e:
+        raise
+        para1,author,inshort1,published_date = refined_text(url)
+        word_count1,word_list = word_count(para1)
+        sen_count1 = sen_count(para1)
+        title1,subtitle1 = header(url)
+    
+        pos_tag_freq1,pos_tag_dict = pos_tag_freq(para1)
+        upos_dict_len = len(pos_tag_freq1)
+        pos_tag_dict=json.dumps(pos_tag_freq1)
+    
+        news_channel = "India Today"
+    
+        # global para1 
+        # para1= refined_text(url)
+        # author = author(url)
+        # inshort = inshort(url)
+        # word_count,word_list = word_count(para1)
+        # sen_count = sen_count(para1)
+        # pos_tag_dict = pos_tag_freq(para1)
     
 
     try:

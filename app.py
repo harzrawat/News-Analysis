@@ -221,11 +221,15 @@ def header(url):
 
 
 
-@app.route("/submit",methods=['POST'])
+@app.route("/submit",methods=['POST','GET'])
 def submit():
-    username1 = request.form.get('username')
-
-    url=request.form.get('url')   # request.form['url'] can also get  
+    if request.method == 'POST':
+        url = request.form['url']
+        username1 = request.form['username']
+        
+    
+    # username1 = request.form.get('username')
+    # url=request.form.get('url')   # request.form['url'] can also get  
 
     para1,author,inshort1,published_date = refined_text(url)
     word_count1,word_list = word_count(para1)

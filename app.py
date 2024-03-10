@@ -72,7 +72,7 @@ db_params = {
 }
 
 def create_table():
-    #conn = psycopg2.connect(**db_params)  # the double star ** is used for dictionary unpacking
+    conn = psycopg2.connect(**db_params)  # the double star ** is used for dictionary unpacking
 
 # CAN BE WRITTEN LIKE BELOW ALSO
 # conn = psycopg2.connect(

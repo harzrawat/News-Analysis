@@ -63,10 +63,10 @@ def index():
 
 
 db_params = {
-    'dbname': 'dhp2024',
+    'dbname': 'dhp2024_500s',
     'user': 'harsh',
-    'password': 'og0SmkFq8jjWPuHtF33OKNf67Ksr6ccl',
-    'host': 'dpg-cn3rmr2cn0vc738puj60-a',
+    'password': 'XchK9yElcWfGBv8r3b3JXSgjqK3I1sdl',
+    'host': 'dpg-cnmptr0l6cac73fd67q0-a',
     'port': 5432
     
 }

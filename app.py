@@ -14,6 +14,7 @@ def download_nltk_data():
         nltk.download('punkt')
         nltk.download('stopwords')
         nltk.download('averaged_perceptron_tagger')
+        nltk.download('universal_tagset')
     except LookupError:
         pass  # Ignore if the data is already downloaded
 

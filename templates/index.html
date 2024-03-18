@@ -14,16 +14,72 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0, #6dd5ed);
     }
+
+    body::before {
+      /* Lines pattern */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+      repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 5px,
+              #fff 5px,
+              #fff 10px
+          ),
+          repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 5px,
+              #fff 5px,
+              #fff 10px
+          );
+            opacity: 0.3; /* Adjust opacity as needed */
+        }
+
+    body::after {
+      /* Dots pattern */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#fff 5%, transparent 5%);
+      background-size: 10px 10px;
+      opacity: 0.1; /* Adjust opacity as needed */
+  }
 
     .container {
       text-align: center;
-      background-color: #ceeab1c9;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid black;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin-left: 5vw;
       margin-right: 5vw;
+      z-index: 2;
+      backdrop-filter: blur(3px);
+      box-shadow: 5px 5px 3px 3px rgb(55, 135, 153) ;
+    }
+    .form-container {
+      text-align: center;
+      background: rgba(95, 79, 79, 0.946);
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-left: 5vw;
+      margin-right: 5vw;
+      z-index: 3;
+    
     }
 
     h1 {
@@ -34,6 +90,7 @@
       display: block;
       margin: 15px 0 5px;
       color: #555;
+      color: white;
     }
 
     input {
@@ -70,17 +127,17 @@
     }
 
     button:hover {
-      background-color: #2980b9;
+      background-color: #e2281b;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <form class="container" action="/submit" method="post">
-      <h1>Welcome to the Index Page</h1>
-      <label for="Username">Username<span style="color: red; font-size: large;">*</span> :</label>
-      <input type="text" id="adminUsername" placeholder="Your name" name="username" required>
-      <label for="url">Enter URL<span style="color: red; font-size: larger;">*</span> :</label>
+    <form class="form-container" action="/submit" method="post">
+      <h1 style="color: white;">k<span style="color: rgb(241, 255, 110); text-decoration: underline;">NOW</span> what yo<span style="color: rgb(241, 255, 87); text-decoration:underline;">U</span> read 🗞️</h1>
+      <label for="Username">Username<span style="color: rgb(255, 223, 163); font-size: large;">*</span> :</label>
+      <input type="text" id="adminUsername" placeholder="Your name" required>
+      <label for="url">Enter URL<span style="color: rgb(249, 255, 145); font-size: larger;">*</span> :</label>
       <input type="text" id="url" placeholder="Enter URL of India Today only" name="url" required>
       <button type="submit">Submit</button>
 
@@ -88,19 +145,15 @@
     </form>
     <form action="/github">
       <div class="login-section">
-        <!-- <div id="admin">
-          <h2>Admin Login</h2>
-          <label for="adminUsername">Username:</label>
-          <input type="text" id="adminUsername" placeholder="Admin Username">
-          <label for="adminPassword">Password:</label>
-          <input type="password" id="adminPassword" placeholder="Admin Password">
-          <button onclick="adminLogin()">Login as Admin</button>
-        </div> -->
 
         <div id="user">
-          <h2>GitHub Authentication</h2>
+          <div style="display: flex; flex-direction: column;">
+            <h2 style="margin-bottom: 0;">Admin Login</h2>
+            <p style="margin-top: 0;color: rgb(255, 2, 2);">Get all search history here</p>
+          </div>
+          
 
-          <button type="submit"><a href="{{url_for('github_login')}}">Login with GitHub</a> </button>
+          <button type="submit"><a href="{{url_for('github_login')}}" style="color: white; font-weight: 400; font-size: 1.2em; text-decoration: none;">Login with GitHub</a> </button>
         </div>
       </div>
     </form>
